@@ -32,3 +32,8 @@ spring:
       min-idle: 0
   #连接超时时间（毫秒）
     timeout: 30000
+ ######  jwt   ####
+jwt:
+  secret: secret
+  expiration: 7200000
+  token: Authorization
