@@ -11,12 +11,12 @@ mybatis:
   type-aliases-package: com.spring.test.spring.boot.test.entity
 spring:
   datasource:
-    driverClassName: oracle.jdbc.driver.OracleDriver
-    url: jdbc:oracle:thin:@192.168.206.105:1521:ORCL
-    username: sdpsgt
-    password: sdpsgt1
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://139.155.235.133:3306/springBootBlog
+    username: springBootBlog
+    password: benren123
   redis:
-    host: 127.0.0.1
+    host: 139.155.235.133
   #Redis服务器连接端口
     port: 6379
   #Redis服务器连接密码（默认为空）

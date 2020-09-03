@@ -64,7 +64,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				// 对于获取token的rest api要允许匿名访问
 //				.antMatchers("/login","/saveUser","/haha","/getUser","/webjars/bootstrap/3.2.0/css/bootstrap.css","/webjars/jquery/2.1.1/jquery.js").permitAll()
 				// 除上面外的所有请求全部需要鉴权认证
-				.antMatchers("/login","/saveUser","/haha","/getUser","/webjars/**").permitAll()
+//				.antMatchers("/login","/saveUser","/haha","/getUser","/webjars/**").permitAll()
+				.antMatchers("/**").permitAll()
 				.anyRequest().authenticated();
 
 		http.addFilterBefore(authenticationTokenFilter, UsernamePasswordAuthenticationFilter.class);

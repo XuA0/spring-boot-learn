@@ -43,6 +43,7 @@ body {
 	margin-left: 20%;
 	margin-top: 50px;
 	width: 60%;
+	font-size: 20px;
 }
 
 .middle-right {
@@ -53,12 +54,13 @@ body {
 	width: 75%;
 }
 
-.middle-right .text{
+.middle-right .text {
 	background-color: red;
 	margin-left: 10%;
 	margin-top: 50px;
 	width: 80%;
-	height: 2000px
+	height: 2000px;
+	font-size: 20px;
 }
 </style>
 </head>
@@ -71,13 +73,14 @@ body {
 	<div class="middle-left">
 		<div class="titles">
 			<ul th:each="title : ${articles}">
-				<li><a href="www.baidu.com"><p th:text="${title.articleTitle}">这里是文章分类</p></a></li>
+				<li><a th:text="${title.articleTitle}"
+					th:href="@{http://localhost:8082/api/getOneArticle?articlesId={id}(id=${title.articlesId})}">这里是文章分类</a></li>
 			</ul>
 		</div>
 	</div>
-	<div th:each="title : ${articles}" class="middle-right">
+	<div class="middle-right">
 		<div class="text">
-			<p th:text="${title.articleText}"></p>
+			<p th:text="${article.articleText}"></p>
 		</div>
 	</div>
 </body>
