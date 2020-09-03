@@ -32,6 +32,10 @@ spring:
       min-idle: 0
   #连接超时时间（毫秒）
     timeout: 30000
+    #########thymeleaf#########
+    thymeleaf:
+      cache: false
+      prefix: classpath:view
  ######  jwt   ####
 jwt:
   secret: secret

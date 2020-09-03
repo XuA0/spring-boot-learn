@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title th:text="用户信息">User</title>
+    <!--默认拼接前缀路径,开头请勿再添加斜杠,防止部署运行报错！-->
+    <script th:replace="common/head::static"></script>
+</head>
+<body>
+
+<div>
+    账号：<input type="text" th:value="${username}"/>
+</div>
+
+<script th:inline="javascript">
+    //通过内联表达式获取用户信息
+ 
+</script>
+</body>
+</html>

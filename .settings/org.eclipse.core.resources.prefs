@@ -1,2 +1,5 @@
 eclipse.preferences.version=1
+encoding//resources/templates/common/head.html=UTF-8
+encoding//resources/templates/common/index.html=UTF-8
+encoding//resources/templates/common/login.html=UTF-8
 encoding/<project>=UTF-8
