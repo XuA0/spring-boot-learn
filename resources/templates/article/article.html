@@ -119,7 +119,7 @@ body {
 		<div class="titles">
 			<ul th:each="title : ${articles}">
 				<li><a th:text="${title.articleTitle}"
-					th:href="@{http://localhost:8082/api/getOneArticle?articlesId={id}(id=${title.articlesId})}">这里是文章分类</a></li>
+					th:href="@{http://localhost:8082/api/articles/getOneArticle?articlesId={id}(id=${title.articlesId})}">这里是文章分类</a></li>
 			</ul>
 		</div>
 	</div>

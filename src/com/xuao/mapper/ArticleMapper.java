@@ -18,7 +18,7 @@ public interface ArticleMapper {
 	@Select("select * from articles where articlesId = #{articlesId}")
 	public ArticleEntity getOneArticle(int articlesId);
 	
-	@Insert("INSERT INTO `articles`(`articlesId`, `articleTitle`, `articleText`, `lastUpdateDate`, `lastUpdateId`) VALUES (#{articlesId},#{articleTitle},#{articleText},#{lastUpdateDate},#{lastUpdateId})")
+	@Insert("INSERT INTO `articles`(`articleTitle`, `articleText`, `lastUpdateDate`, `lastUpdateId`) VALUES (#{articleTitle},#{articleText},#{lastUpdateDate},#{lastUpdateId})")
 	@Options(useGeneratedKeys = true, keyColumn = "articlesId", keyProperty = "articlesId")
 	public boolean writeArticle(ArticleEntity articleEntity);
 	

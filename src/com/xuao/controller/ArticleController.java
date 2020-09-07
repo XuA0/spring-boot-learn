@@ -1,8 +1,10 @@
 package com.xuao.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
+import org.apache.naming.java.javaURLContextFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,7 +16,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.xuao.bean.ArticleEntity;
 import com.xuao.mapper.ArticleMapper;
 
-@RestController("/articles")
+@RestController
+@RequestMapping("/articles")
 public class ArticleController {
 
 	@Autowired
@@ -56,6 +59,8 @@ public class ArticleController {
 	@PostMapping("/writeArticle")
 	public ModelAndView writeArticle(@RequestBody ArticleEntity articleEntity) {
 		
+		articleEntity.setLastUpdateDate(new Date(java.lang.System.currentTimeMillis()));
+		articleEntity.setLastUpdateId("xuao");
 		articleMapper.writeArticle(articleEntity);
 		
 		ModelAndView modelAndView = new ModelAndView();
