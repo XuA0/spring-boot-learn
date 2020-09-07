@@ -2,7 +2,11 @@ package com.xuao.controller;
 
 import java.util.List;
 
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
@@ -37,6 +41,27 @@ public class ArticleController {
 		modelAndView.addObject("article", articleMapper.getOneArticle(articlesId));
 		
 		modelAndView.setViewName("article/article");
+		return modelAndView;
+	}
+	
+	@GetMapping("/writeArticle")
+	public ModelAndView writeArticle() {
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("articles", articleMapper.getAllArticles());
+		
+		modelAndView.setViewName("article/writeArticle");
+		return modelAndView;
+	}
+	
+	@PostMapping("/writeArticle")
+	public ModelAndView writeArticle(@RequestBody ArticleEntity articleEntity) {
+		
+		articleMapper.writeArticle(articleEntity);
+		
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("articles", articleMapper.getAllArticles());
+		
+		modelAndView.setViewName("article/writeArticle");
 		return modelAndView;
 	}
 }
