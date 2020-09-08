@@ -13,19 +13,7 @@ import com.xuao.alipay.AlipayProperties;
 
 ///**
 // * 配置文件监听器，用来加载自定义配置文件
-// * @author Louis
-// * @date Dec 12, 2018
 // */
-//@Component
-//public class PropertiesListener implements ApplicationListener<ApplicationStartedEvent> {
-//	Logger logger = LoggerFactory.getLogger(PropertiesListener.class);
-//	
-//    @Override
-//    public void onApplicationEvent(ApplicationStartedEvent event) {
-//    	logger.info("load alipay properties");
-//        AlipayProperties.loadProperties();
-//    }
-//}
 
 @Configuration  
 @PropertySources(  

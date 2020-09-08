@@ -2,6 +2,7 @@ package com.xuao.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
@@ -22,4 +23,6 @@ public interface ArticleMapper {
 	@Options(useGeneratedKeys = true, keyColumn = "articlesId", keyProperty = "articlesId")
 	public boolean writeArticle(ArticleEntity articleEntity);
 	
+	@Delete("DELETE FROM `articles` where articlesId = #{articlesId}")
+	public boolean deleteArticle(ArticleEntity articleEntity);
 }

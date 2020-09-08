@@ -16,7 +16,7 @@ import com.xuao.service.PayService;
  * @date Dec 12, 2018
  */
 @RestController()
-@RequestMapping("order")
+@RequestMapping("/order")
 public class AlipayController {
 
     @Autowired
@@ -31,7 +31,7 @@ public class AlipayController {
      * @return
      * @throws AlipayApiException
      */
-    @PostMapping(value = "alipay")
+    @PostMapping(value = "/alipay")
     public String alipay(String outTradeNo, String subject, String totalAmount, String body) throws AlipayApiException {
         AlipayBean alipayBean = new AlipayBean();
         alipayBean.setOut_trade_no(outTradeNo);

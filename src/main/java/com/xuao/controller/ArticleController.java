@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.xuao.bean.ArticleEntity;
+import com.xuao.bean.ResultVO;
 import com.xuao.mapper.ArticleMapper;
 
 @RestController
@@ -57,16 +58,24 @@ public class ArticleController {
 	}
 	
 	@PostMapping("/writeArticle")
-	public ModelAndView writeArticle(@RequestBody ArticleEntity articleEntity) {
+	public ResultVO writeArticle(@RequestBody ArticleEntity articleEntity) {
 		
+		ResultVO resultVO = new ResultVO();
 		articleEntity.setLastUpdateDate(new Date(java.lang.System.currentTimeMillis()));
 		articleEntity.setLastUpdateId("xuao");
 		articleMapper.writeArticle(articleEntity);
 		
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.addObject("articles", articleMapper.getAllArticles());
 		
-		modelAndView.setViewName("article/writeArticle");
-		return modelAndView;
+		resultVO.setResult(articleEntity.getArticlesId());
+		return resultVO;
+	}
+	
+	@PostMapping("/deleteArticle")
+	public ResultVO deleteArticle(@RequestBody ArticleEntity articleEntity) {
+		
+		ResultVO resultVO = new ResultVO();
+		articleMapper.deleteArticle(articleEntity);
+		resultVO.setResult(true);
+		return resultVO;
 	}
 }

@@ -30,12 +30,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.xuao.bean.ResultVO;
 import com.xuao.bean.UserEntity;
 import com.xuao.jwt.JwtTokenUtil;
+import com.xuao.mapper.ArticleMapper;
 import com.xuao.redis.RedisUtils;
 import com.xuao.service.JwtUserDetailsService;
 
@@ -57,6 +59,9 @@ public class LoginController {
 
 	@Autowired
 	private JwtTokenUtil jwtTokenUtil;
+	
+	@Autowired
+	private ArticleMapper articleMapper;
 
 	@PostMapping("/login")
 	public ResultVO login(@RequestBody UserEntity sysUser, HttpServletRequest request) {
@@ -179,6 +184,15 @@ public class LoginController {
 
 	public static String binary(byte[] bytes, int radix) {
 		return new BigInteger(1, bytes).toString(radix);
+	}
+	
+	@RequestMapping("/")
+	public ModelAndView index() {
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("articles", articleMapper.getAllArticles());
+		modelAndView.setViewName("common/index");
+		
+		return modelAndView;
 	}
 
 }

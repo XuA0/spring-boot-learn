@@ -12,7 +12,8 @@ import com.xuao.bean.ResultVO;
 import com.xuao.mapper.UserMapper;
 import com.xuao.redis.RedisUtils;
 
-@RestController("/user")
+@RestController
+@RequestMapping("/user")
 public class UserController {
 	Logger logger = LoggerFactory.getLogger(UserController.class);
 	@Autowired
